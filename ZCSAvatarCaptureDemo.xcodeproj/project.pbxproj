@@ -21,6 +21,9 @@
 		11A0507419AE832B00183EE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505619AE832B00183EE4 /* UIKit.framework */; };
 		11A0507C19AE832B00183EE4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11A0507A19AE832B00183EE4 /* InfoPlist.strings */; };
 		11A0507E19AE832C00183EE4 /* ZCSAvatarCaptureDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0507D19AE832C00183EE4 /* ZCSAvatarCaptureDemoTests.m */; };
+		11A0508C19AE840800183EE4 /* ZCSAvatarCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0508B19AE840800183EE4 /* ZCSAvatarCaptureController.m */; };
+		11A0508E19AE905B00183EE4 /* PKImageBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11A0508D19AE905B00183EE4 /* PKImageBundle.bundle */; };
+		33209C6A547F4756A9D1874B /* libPods-ZCSAvatarCaptureDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD35B45DBAEF47BBA7562943 /* libPods-ZCSAvatarCaptureDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		11A0507919AE832B00183EE4 /* ZCSAvatarCaptureDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZCSAvatarCaptureDemoTests-Info.plist"; sourceTree = "<group>"; };
 		11A0507B19AE832B00183EE4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11A0507D19AE832C00183EE4 /* ZCSAvatarCaptureDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCSAvatarCaptureDemoTests.m; sourceTree = "<group>"; };
+		11A0508A19AE840800183EE4 /* ZCSAvatarCaptureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSAvatarCaptureController.h; sourceTree = "<group>"; };
+		11A0508B19AE840800183EE4 /* ZCSAvatarCaptureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSAvatarCaptureController.m; sourceTree = "<group>"; };
+		11A0508D19AE905B00183EE4 /* PKImageBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PKImageBundle.bundle; sourceTree = "<group>"; };
+		92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZCSAvatarCaptureDemo.xcconfig"; path = "Pods/Pods-ZCSAvatarCaptureDemo.xcconfig"; sourceTree = "<group>"; };
+		AD35B45DBAEF47BBA7562943 /* libPods-ZCSAvatarCaptureDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZCSAvatarCaptureDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,7 @@
 				11A0505519AE832B00183EE4 /* CoreGraphics.framework in Frameworks */,
 				11A0505719AE832B00183EE4 /* UIKit.framework in Frameworks */,
 				11A0505319AE832B00183EE4 /* Foundation.framework in Frameworks */,
+				33209C6A547F4756A9D1874B /* libPods-ZCSAvatarCaptureDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +91,14 @@
 		11A0504619AE832B00183EE4 = {
 			isa = PBXGroup;
 			children = (
+				11A0508D19AE905B00183EE4 /* PKImageBundle.bundle */,
+				11A0508A19AE840800183EE4 /* ZCSAvatarCaptureController.h */,
+				11A0508B19AE840800183EE4 /* ZCSAvatarCaptureController.m */,
 				11A0505819AE832B00183EE4 /* ZCSAvatarCaptureDemo */,
 				11A0507719AE832B00183EE4 /* ZCSAvatarCaptureDemoTests */,
 				11A0505119AE832B00183EE4 /* Frameworks */,
 				11A0505019AE832B00183EE4 /* Products */,
+				92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +118,7 @@
 				11A0505419AE832B00183EE4 /* CoreGraphics.framework */,
 				11A0505619AE832B00183EE4 /* UIKit.framework */,
 				11A0507119AE832B00183EE4 /* XCTest.framework */,
+				AD35B45DBAEF47BBA7562943 /* libPods-ZCSAvatarCaptureDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -159,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A0508119AE832C00183EE4 /* Build configuration list for PBXNativeTarget "ZCSAvatarCaptureDemo" */;
 			buildPhases = (
+				48779EC913DC459691C27A64 /* Check Pods Manifest.lock */,
 				11A0504B19AE832B00183EE4 /* Sources */,
 				11A0504C19AE832B00183EE4 /* Frameworks */,
 				11A0504D19AE832B00183EE4 /* Resources */,
+				C07CA5B6EEA04865929C79C7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A0508E19AE905B00183EE4 /* PKImageBundle.bundle in Resources */,
 				11A0506B19AE832B00183EE4 /* Images.xcassets in Resources */,
 				11A0505D19AE832B00183EE4 /* InfoPlist.strings in Resources */,
 				11A0506619AE832B00183EE4 /* Main.storyboard in Resources */,
@@ -244,11 +261,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48779EC913DC459691C27A64 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C07CA5B6EEA04865929C79C7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ZCSAvatarCaptureDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11A0504B19AE832B00183EE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A0508C19AE840800183EE4 /* ZCSAvatarCaptureController.m in Sources */,
 				11A0506919AE832B00183EE4 /* ViewController.m in Sources */,
 				11A0506319AE832B00183EE4 /* AppDelegate.m in Sources */,
 				11A0505F19AE832B00183EE4 /* main.m in Sources */,
@@ -373,6 +424,7 @@
 		};
 		11A0508219AE832C00183EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -386,6 +438,7 @@
 		};
 		11A0508319AE832C00183EE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -456,6 +509,7 @@
 				11A0508319AE832C00183EE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11A0508419AE832C00183EE4 /* Build configuration list for PBXNativeTarget "ZCSAvatarCaptureDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +518,7 @@
 				11A0508619AE832C00183EE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

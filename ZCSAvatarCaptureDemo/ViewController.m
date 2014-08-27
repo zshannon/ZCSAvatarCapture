@@ -7,23 +7,31 @@
 //
 
 #import "ViewController.h"
+#import "ZCSAvatarCaptureController.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) ZCSAvatarCaptureController *avatarCaptureController;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)viewDidLoad {
+	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	self.avatarCaptureController = [[ZCSAvatarCaptureController alloc] init];
+	self.avatarCaptureController.delegate = self;
+	self.avatarCaptureController.view.frame = self.avatarView.frame;
+	[self.view addSubview:self.avatarCaptureController.view];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)imageSelected:(UIImage *)image {
+	NSLog(@"imageSelected: %@", image);
+}
+
+- (void)imageSelectionCancelled {
+	NSLog(@"imageSelectionCancelled");
 }
 
 @end

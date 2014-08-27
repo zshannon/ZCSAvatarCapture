@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZCsAvatarCaptureController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <ZCSAvatarCaptureControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIView *avatarView;
 
 @end
