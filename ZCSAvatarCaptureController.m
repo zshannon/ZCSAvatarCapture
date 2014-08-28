@@ -254,10 +254,10 @@
 
 - (IBAction)photoSelected:(id)sender {
 	self.image = self.selectedImage;
+	[self endCapture];
 	if ([self.delegate respondsToSelector:@selector(imageSelected:)]) {
 		[self.delegate imageSelected:self.image];
 	}
-	[self endCapture];
 }
 
 - (IBAction)cancelSelectedPhoto:(id)sender {

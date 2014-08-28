@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZCSAvatarCapture"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "User avatar editing made nice."
 
   s.description  = "This is a nice interface for editing a photo. Just tap on the photo to change it. It's greate for user avatars."
