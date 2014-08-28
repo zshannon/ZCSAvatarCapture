@@ -12,6 +12,7 @@
 
 @interface ZCSAvatarCaptureController () {
 	CGRect previousFrame;
+	BOOL isCapturing;
 }
 
 @property (nonatomic, strong) UIImageView *avatarView;
@@ -34,7 +35,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.view.backgroundColor = [UIColor yellowColor];
+	isCapturing = NO;
+	// self.view.backgroundColor = [UIColor yellowColor];
 	self.view.autoresizesSubviews = YES;
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startCapture)];
@@ -49,34 +51,51 @@
 
 - (void)viewWillLayoutSubviews {
 	[super viewWillLayoutSubviews];
-	NSLog(@"CGRectGetWidth(self.view.frame): %f", CGRectGetWidth(self.view.frame) / 2.0);
 	self.view.layer.cornerRadius = CGRectGetWidth(self.view.frame) / 2.0;
 	self.avatarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
 	self.avatarView.layer.cornerRadius = CGRectGetWidth(self.view.frame) / 2.0;
 }
 
 - (void)startCapture {
-	for (UIView *subview in [self.view.subviews copy]) [subview removeFromSuperview];
+	if (isCapturing) return;
+	isCapturing = YES;
+	for (UIView *subview in [self.view.subviews copy]) {
+		[subview removeFromSuperview];
+	}
 	previousFrame = self.view.frame;
 	self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+	self.view.layer.cornerRadius = 0.0f;
+	UIView *shadeView = [[UIView alloc] initWithFrame:self.view.frame];
+	shadeView.alpha = 0.85f;
+	shadeView.backgroundColor = [UIColor blackColor];
+	[self.view insertSubview:shadeView atIndex:0];
 	// Do any additional setup after loading the view.
 	self.captureSession = [[AVCaptureSession alloc] init];
 	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
 
 	self.capturedImageView = [[UIImageView alloc] init];
-	self.capturedImageView.frame = self.view.frame; // just to even it out
+	self.capturedImageView.frame = previousFrame;
+	self.capturedImageView.layer.cornerRadius = CGRectGetWidth(self.capturedImageView.frame) / 2;
+	self.capturedImageView.layer.masksToBounds = YES;
 	self.capturedImageView.backgroundColor = [UIColor clearColor];
 	self.capturedImageView.userInteractionEnabled = YES;
 	self.capturedImageView.contentMode = UIViewContentModeScaleAspectFill;
 
 	self.captureVideoPreviewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
 	self.captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	self.captureVideoPreviewLayer.frame = self.view.frame;
+	self.captureVideoPreviewLayer.frame = previousFrame; // self.view.frame;
+	self.captureVideoPreviewLayer.cornerRadius = CGRectGetWidth(self.captureVideoPreviewLayer.frame) / 2;
 	[self.view.layer addSublayer:self.captureVideoPreviewLayer];
 
 	NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
 	if (devices.count > 0) {
 		self.captureDevice = devices[0];
+		for (AVCaptureDevice *device in devices) {
+			if (device.position == AVCaptureDevicePositionFront) {
+				self.captureDevice = device;
+				break;
+			}
+		}
 
 		NSError *error = nil;
 		AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self.captureDevice error:&error];
@@ -94,54 +113,48 @@
 			_captureVideoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
 		}
 
-		UIButton *camerabutton = [[UIButton alloc]
-			initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) / 2 - 50, CGRectGetHeight(self.view.frame) - 100, 100, 100)];
-		[camerabutton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/take-snap"] forState:UIControlStateNormal];
-		[camerabutton addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
-		[camerabutton setTintColor:[UIColor blueColor]];
-		[camerabutton.layer setCornerRadius:20.0];
-		[self.view addSubview:camerabutton];
+		UIButton *shutterButton =
+			[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) / 2 - 50,
+								   previousFrame.origin.y + previousFrame.size.height + 10, 100, 100)];
+		[shutterButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/take-snap"] forState:UIControlStateNormal];
+		[shutterButton addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
+		[shutterButton setTintColor:[UIColor blueColor]];
+		[shutterButton.layer setCornerRadius:20.0];
+		[self.view addSubview:shutterButton];
 
-		UIButton *flashbutton = [[UIButton alloc] initWithFrame:CGRectMake(5, 25, 30, 31)];
-		[flashbutton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/flash"] forState:UIControlStateNormal];
-		[flashbutton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/flashselected"] forState:UIControlStateSelected];
-		[flashbutton addTarget:self action:@selector(flash:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:flashbutton];
-
-		UIButton *frontcamera = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 50, 25, 47, 25)];
-		[frontcamera setImage:[UIImage imageNamed:@"PKImageBundle.bundle/front-camera"] forState:UIControlStateNormal];
-		[frontcamera addTarget:self action:@selector(showFrontCamera:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:frontcamera];
+		UIButton *swapCamerasButton =
+			[[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x, previousFrame.origin.y - 35, 47, 25)];
+		[swapCamerasButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/front-camera"] forState:UIControlStateNormal];
+		[swapCamerasButton addTarget:self action:@selector(swapCameras:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:swapCamerasButton];
 	}
 
-	UIButton *album =
-		[[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) - 35, CGRectGetHeight(self.view.frame) - 40, 27, 27)];
-	[album setImage:[UIImage imageNamed:@"PKImageBundle.bundle/library"] forState:UIControlStateNormal];
-	[album addTarget:self action:@selector(showalbum:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:album];
+	UIButton *showImagePickerButton = [[UIButton alloc]
+		initWithFrame:CGRectMake(previousFrame.origin.x + previousFrame.size.width - 27, previousFrame.origin.y - 35, 27, 27)];
+	[showImagePickerButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/library"] forState:UIControlStateNormal];
+	[showImagePickerButton addTarget:self action:@selector(showImagePicker:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:showImagePickerButton];
 
-	UIButton *cancel = [[UIButton alloc] initWithFrame:CGRectMake(5, CGRectGetHeight(self.view.frame) - 40, 32, 32)];
-	[cancel setImage:[UIImage imageNamed:@"PKImageBundle.bundle/cancel"] forState:UIControlStateNormal];
-	[cancel addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:cancel];
-
-	self.picker = [[UIImagePickerController alloc] init];
-	self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	self.picker.delegate = self;
+	UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) / 2 - 16,
+									    previousFrame.origin.y + previousFrame.size.height + 120, 32, 32)];
+	[cancelButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/cancel"] forState:UIControlStateNormal];
+	[cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+	[self.view addSubview:cancelButton];
 
 	self.imageSelectedView = [[UIView alloc] initWithFrame:self.view.frame];
 	[self.imageSelectedView setBackgroundColor:[UIColor clearColor]];
 	[self.imageSelectedView addSubview:self.capturedImageView];
-	UIView *overlayView =
-		[[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame) - 60, CGRectGetWidth(self.view.frame), 60)];
-	[overlayView setBackgroundColor:[UIColor colorWithWhite:0.2 alpha:0.9]];
+
+	UIView *overlayView = [[UIView alloc]
+		initWithFrame:CGRectMake(0, previousFrame.origin.y + CGRectGetHeight(previousFrame), CGRectGetWidth(self.view.frame), 60)];
 	[self.imageSelectedView addSubview:overlayView];
-	UIButton *selectPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetWidth(overlayView.frame) - 40, 20, 32, 32)];
+	UIButton *selectPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x, 0, 32, 32)];
 	[selectPhotoButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/selected"] forState:UIControlStateNormal];
 	[selectPhotoButton addTarget:self action:@selector(photoSelected:) forControlEvents:UIControlEventTouchUpInside];
 	[overlayView addSubview:selectPhotoButton];
 
-	UIButton *cancelSelectPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 20, 32, 32)];
+	UIButton *cancelSelectPhotoButton =
+		[[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x + previousFrame.size.width - 32, 0, 32, 32)];
 	[cancelSelectPhotoButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/cancel"] forState:UIControlStateNormal];
 	[cancelSelectPhotoButton addTarget:self action:@selector(cancelSelectedPhoto:) forControlEvents:UIControlEventTouchUpInside];
 	[overlayView addSubview:cancelSelectPhotoButton];
@@ -165,6 +178,7 @@
 	self.avatarView.layer.cornerRadius = self.avatarView.frame.size.width / 2;
 	[self.view addSubview:self.avatarView];
 	self.view.layer.cornerRadius = self.view.frame.size.width / 2;
+	isCapturing = NO;
 }
 
 - (IBAction)capturePhoto:(id)sender {
@@ -192,6 +206,9 @@
 									   UIImage *capturedImage = [[UIImage alloc] initWithData:imageData scale:1];
 									   self.isCapturingImage = NO;
 									   self.capturedImageView.image = capturedImage;
+									   for (UIView *view in self.view.subviews) {
+										   if ([view class] == [UIButton class]) view.hidden = YES;
+									   }
 									   [self.view addSubview:self.imageSelectedView];
 									   self.selectedImage = capturedImage;
 									   imageData = nil;
@@ -199,26 +216,7 @@
 							   }];
 }
 
-- (IBAction)flash:(UIButton *)sender {
-	if ([self.captureDevice isFlashAvailable]) {
-		if (self.captureDevice.flashActive) {
-			if ([self.captureDevice lockForConfiguration:nil]) {
-				self.captureDevice.flashMode = AVCaptureFlashModeOff;
-				[sender setTintColor:[UIColor grayColor]];
-				[sender setSelected:NO];
-			}
-		} else {
-			if ([self.captureDevice lockForConfiguration:nil]) {
-				self.captureDevice.flashMode = AVCaptureFlashModeOn;
-				[sender setTintColor:[UIColor blueColor]];
-				[sender setSelected:YES];
-			}
-		}
-		[self.captureDevice unlockForConfiguration];
-	}
-}
-
-- (IBAction)showFrontCamera:(id)sender {
+- (IBAction)swapCameras:(id)sender {
 	if (self.isCapturingImage != YES) {
 		if (self.captureDevice == [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo][0]) {
 			// rear active, switch to front
@@ -246,7 +244,11 @@
 		// Need to reset flash btn
 	}
 }
-- (IBAction)showalbum:(id)sender {
+
+- (IBAction)showImagePicker:(id)sender {
+	self.picker = [[UIImagePickerController alloc] init];
+	self.picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	self.picker.delegate = self;
 	[self presentViewController:self.picker animated:YES completion:nil];
 }
 
@@ -260,6 +262,9 @@
 
 - (IBAction)cancelSelectedPhoto:(id)sender {
 	[self.imageSelectedView removeFromSuperview];
+	for (UIView *view in self.view.subviews) {
+		if ([view class] == [UIButton class]) view.hidden = NO;
+	}
 }
 
 - (IBAction)cancel:(id)sender {
@@ -269,13 +274,17 @@
 	}
 }
 
+#pragma mark - UIImagePickerControllerDelegate
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 	self.selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
 
 	[self dismissViewControllerAnimated:YES
 				   completion:^{
 					   self.capturedImageView.image = self.selectedImage;
-					   
+					   for (UIView *view in self.view.subviews) {
+						   if ([view class] == [UIButton class]) view.hidden = YES;
+					   }
 					   [self.view addSubview:self.imageSelectedView];
 				   }];
 }
