@@ -9,6 +9,8 @@ You've got user avatars in your app. You probably don't have user avatar editing
 
 ## Use in your project
 
+### Setup
+
 ```obj-c
 #import "ZCSAvatarCaptureController.h"
 
@@ -17,6 +19,13 @@ avatarCaptureController.delegate = self;
 avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"]; // Use your current avatar image here
 avatarCaptureController.view.frame = CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 100, 100); // Set to whatever size you'd like
 [self.view addSubview:avatarCaptureController.view];
+```
+
+### Capture
+```obj-c
+- (void)imageSelected:(UIImage *)image {
+	// Do something with your user's new avatar image
+}
 ```
 
 ## Screenshots ##
