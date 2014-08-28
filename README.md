@@ -21,10 +21,10 @@ avatarCaptureController.view.frame = CGRectMake(self.view.frame.size.width / 2, 
 
 ## Screenshots ##
 
-![Example App with Avatar](/../screenshots/screenshots/one.png?raw=true "Example App with Avatar")
-![Example with Camera](/../screenshots/screenshots/two.png?raw=true "Example with Camera")
-![Example with Photo](/../screenshots/screenshots/three.png?raw=true "Example with Photo")
-![Example App after Avatar](/../screenshots/screenshots/four.png?raw=true "Example App after Avatar")
+![Example App with Avatar](/../screenshots/one.png?raw=true "Example App with Avatar")
+![Example with Camera](/../screenshots/two.png?raw=true "Example with Camera")
+![Example with Photo](/../screenshots/three.png?raw=true "Example with Photo")
+![Example App after Avatar](/../screenshots/four.png?raw=true "Example App after Avatar")
 
 ## Contributing ##
 
