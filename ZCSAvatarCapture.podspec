@@ -17,12 +17,12 @@ Pod::Spec.new do |s|
 
   s.name         = "ZCSAvatarCapture"
   s.version      = "0.0.1"
-  # s.summary      = "Replacement for UIImagePickerController"
+  s.summary      = "User avatar editing made nice."
 
-  # s.description  = "Replacement for UIImagePickerController which provides album and camera switcher integrated in the controller, so that you dont have to write a seperate actionsheet for it"
+  s.description  = "This is a nice interface for editing a photo. Just tap on the photo to change it. It's greate for user avatars."
 
   s.homepage     = "https://github.com/zshannon/ZCSAvatarCapture"
-  # s.screenshots  = "https://raw.githubusercontent.com/pavankris/PKImagePickerDemo/master/ImagePickerScreenShot.png"
+  s.screenshots  = ["https://raw.githubusercontent.com/zshannon/ZCSAvatarCapture/screenshots/one.png", "https://raw.githubusercontent.com/zshannon/ZCSAvatarCapture/screenshots/two.png", "https://raw.githubusercontent.com/zshannon/ZCSAvatarCapture/screenshots/three.png", "https://raw.githubusercontent.com/zshannon/ZCSAvatarCapture/screenshots/four.png"]
 
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "ZCSAvatarCapture.{h,m}"
+  s.source_files  = "ZCSAvatarCaptureController.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
