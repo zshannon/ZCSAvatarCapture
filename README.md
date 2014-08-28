@@ -1,16 +1,18 @@
-PKImagePickerDemo
+ZCSAvatarCapture
 =================
 
-**Replacement for UIIMagePickerController, which has camera and album integrated and easy to switch between them**
+## Add to your Podfile
 
-![PKImagePicker](https://raw.githubusercontent.com/pavankris/PKImagePickerDemo/master/ImagePickerScreenShot.png)
+`pod 'ZCSAvatarCapture', '~> 0.0.1'`
 
-##Usage
+## Use in your project
+```obj-c
+#import "ZCSAvatarCaptureController.h"
 
-`pod 'PKImagePicker', '~> 0.0.2'`
+ZCSAvatarCaptureController *avatarCaptureController = [[ZCSAvatarCaptureController alloc] init];
+avatarCaptureController.delegate = self;
+avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"];
+avatarCaptureController.view.frame = self.avatarView.frame;
+[self.view addSubview:avatarCaptureController.view];
+```
 
-`PKImagePickerController *imagePicker = [[PKImagePickerController alloc]init];`
-
-`imagePicker.delegate = self;`
-
-`[self presentViewController:self.imagePicker animated:YES completion:nil];`
