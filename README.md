@@ -1,11 +1,14 @@
 ZCSAvatarCapture
 =================
 
+You've got user avatars in your app. You probably don't have user avatar editing as nice as this.
+
 ## Add to your Podfile
 
 `pod 'ZCSAvatarCapture', '~> 0.0.1'`
 
 ## Use in your project
+
 ```obj-c
 #import "ZCSAvatarCaptureController.h"
 
@@ -16,3 +19,13 @@ avatarCaptureController.view.frame = CGRectMake(self.view.frame.size.width / 2, 
 [self.view addSubview:avatarCaptureController.view];
 ```
 
+## Screenshots ##
+
+![Example App with Avatar](/../screenshots/screenshots/one.png?raw=true "Example App with Avatar")
+![Example with Camera](/../screenshots/screenshots/two.png?raw=true "Example with Camera")
+![Example with Photo](/../screenshots/screenshots/three.png?raw=true "Example with Photo")
+![Example App after Avatar](/../screenshots/screenshots/four.png?raw=true "Example App after Avatar")
+
+## Contributing ##
+
+Send me Pull Requests here, please.
