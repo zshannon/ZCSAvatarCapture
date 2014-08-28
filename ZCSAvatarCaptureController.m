@@ -8,6 +8,7 @@
 
 #import "ZCSAvatarCaptureController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface ZCSAvatarCaptureController () {
 	CGRect previousFrame;
@@ -34,13 +35,24 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor yellowColor];
+	self.view.autoresizesSubviews = YES;
+	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(startCapture)];
 	[self.view addGestureRecognizer:singleTapGestureRecognizer];
-	UIImageView *avatarView = [[UIImageView alloc] initWithFrame:self.view.frame];
-	avatarView.image = self.image;
-	avatarView.clipsToBounds = YES;
-	avatarView.contentMode = UIViewContentModeScaleAspectFit;
-	[self.view addSubview:avatarView];
+	self.avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
+	self.avatarView.image = self.image;
+	self.avatarView.contentMode = UIViewContentModeScaleAspectFill;
+	self.avatarView.layer.masksToBounds = YES;
+	self.avatarView.layer.cornerRadius = CGRectGetWidth(self.view.frame) / 2;
+	[self.view addSubview:self.avatarView];
+}
+
+- (void)viewWillLayoutSubviews {
+	[super viewWillLayoutSubviews];
+	NSLog(@"CGRectGetWidth(self.view.frame): %f", CGRectGetWidth(self.view.frame) / 2.0);
+	self.view.layer.cornerRadius = CGRectGetWidth(self.view.frame) / 2.0;
+	self.avatarView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+	self.avatarView.layer.cornerRadius = CGRectGetWidth(self.view.frame) / 2.0;
 }
 
 - (void)startCapture {
@@ -146,11 +158,13 @@
 		[subview removeFromSuperview];
 	}
 	self.view.frame = previousFrame;
-	UIImageView *avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(previousFrame), CGRectGetHeight(previousFrame))];
-	avatarView.image = self.image;
-	avatarView.clipsToBounds = YES;
-	avatarView.contentMode = UIViewContentModeScaleAspectFill;
-	[self.view addSubview:avatarView];
+	self.avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(previousFrame), CGRectGetHeight(previousFrame))];
+	self.avatarView.image = self.image;
+	self.avatarView.contentMode = UIViewContentModeScaleAspectFill;
+	self.avatarView.layer.masksToBounds = YES;
+	self.avatarView.layer.cornerRadius = self.avatarView.frame.size.width / 2;
+	[self.view addSubview:self.avatarView];
+	self.view.layer.cornerRadius = self.view.frame.size.width / 2;
 }
 
 - (IBAction)capturePhoto:(id)sender {

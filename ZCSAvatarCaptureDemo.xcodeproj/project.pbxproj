@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11284AED19AEA496002169BB /* model-001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11284AEC19AEA496002169BB /* model-001.jpg */; };
 		11A0505319AE832B00183EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505219AE832B00183EE4 /* Foundation.framework */; };
 		11A0505519AE832B00183EE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505419AE832B00183EE4 /* CoreGraphics.framework */; };
 		11A0505719AE832B00183EE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505619AE832B00183EE4 /* UIKit.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11284AEC19AEA496002169BB /* model-001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "model-001.jpg"; sourceTree = "<group>"; };
 		11A0504F19AE832B00183EE4 /* ZCSAvatarCaptureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCSAvatarCaptureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0505219AE832B00183EE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11A0505419AE832B00183EE4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +142,7 @@
 		11A0505919AE832B00183EE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11284AEC19AEA496002169BB /* model-001.jpg */,
 				11A0505A19AE832B00183EE4 /* ZCSAvatarCaptureDemo-Info.plist */,
 				11A0505B19AE832B00183EE4 /* InfoPlist.strings */,
 				11A0505E19AE832B00183EE4 /* main.m */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11A0508E19AE905B00183EE4 /* PKImageBundle.bundle in Resources */,
+				11284AED19AEA496002169BB /* model-001.jpg in Resources */,
 				11A0506B19AE832B00183EE4 /* Images.xcassets in Resources */,
 				11A0505D19AE832B00183EE4 /* InfoPlist.strings in Resources */,
 				11A0506619AE832B00183EE4 /* Main.storyboard in Resources */,
