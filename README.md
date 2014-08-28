@@ -11,8 +11,8 @@ ZCSAvatarCapture
 
 ZCSAvatarCaptureController *avatarCaptureController = [[ZCSAvatarCaptureController alloc] init];
 avatarCaptureController.delegate = self;
-avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"];
-avatarCaptureController.view.frame = self.avatarView.frame;
+avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"]; // Use your current avatar image here
+avatarCaptureController.view.frame = CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 100, 100); // Set to whatever size you'd like
 [self.view addSubview:avatarCaptureController.view];
 ```
 
