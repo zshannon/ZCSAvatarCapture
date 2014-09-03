@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D9E8DD33-1609-484B-A052-D466F0E94DF1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ZCSAvatarCaptureDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EB4BA7BB-9C0B-4F07-BE80-AF9C784E450A</key>
+		<string>ssh://github.com/zshannon/ZCSAvatarCapture.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ZCSAvatarCaptureDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EB4BA7BB-9C0B-4F07-BE80-AF9C784E450A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/zshannon/ZCSAvatarCapture.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EB4BA7BB-9C0B-4F07-BE80-AF9C784E450A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EB4BA7BB-9C0B-4F07-BE80-AF9C784E450A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZCSAvatarCaptureDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

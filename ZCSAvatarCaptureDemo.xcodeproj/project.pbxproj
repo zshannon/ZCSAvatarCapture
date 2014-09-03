@@ -24,7 +24,6 @@
 		11A0507E19AE832C00183EE4 /* ZCSAvatarCaptureDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0507D19AE832C00183EE4 /* ZCSAvatarCaptureDemoTests.m */; };
 		11A0508C19AE840800183EE4 /* ZCSAvatarCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0508B19AE840800183EE4 /* ZCSAvatarCaptureController.m */; };
 		11A0508E19AE905B00183EE4 /* PKImageBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11A0508D19AE905B00183EE4 /* PKImageBundle.bundle */; };
-		33209C6A547F4756A9D1874B /* libPods-ZCSAvatarCaptureDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD35B45DBAEF47BBA7562943 /* libPods-ZCSAvatarCaptureDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +72,6 @@
 				11A0505519AE832B00183EE4 /* CoreGraphics.framework in Frameworks */,
 				11A0505719AE832B00183EE4 /* UIKit.framework in Frameworks */,
 				11A0505319AE832B00183EE4 /* Foundation.framework in Frameworks */,
-				33209C6A547F4756A9D1874B /* libPods-ZCSAvatarCaptureDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,11 +174,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11A0508119AE832C00183EE4 /* Build configuration list for PBXNativeTarget "ZCSAvatarCaptureDemo" */;
 			buildPhases = (
-				48779EC913DC459691C27A64 /* Check Pods Manifest.lock */,
 				11A0504B19AE832B00183EE4 /* Sources */,
 				11A0504C19AE832B00183EE4 /* Frameworks */,
 				11A0504D19AE832B00183EE4 /* Resources */,
-				C07CA5B6EEA04865929C79C7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,39 +260,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		48779EC913DC459691C27A64 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C07CA5B6EEA04865929C79C7 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ZCSAvatarCaptureDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11A0504B19AE832B00183EE4 /* Sources */ = {
@@ -434,6 +397,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -448,6 +412,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
