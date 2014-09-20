@@ -402,7 +402,7 @@
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -417,7 +417,7 @@
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

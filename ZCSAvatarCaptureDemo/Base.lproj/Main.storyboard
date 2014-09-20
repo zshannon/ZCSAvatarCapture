@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="UBe-2y-tTH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="-16" y="0.0" width="632" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEO-RZ-O19">
                                 <rect key="frame" x="150" y="147" width="300" height="300"/>
@@ -75,9 +75,9 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="AEO-RZ-O19" secondAttribute="centerX" id="JHx-xC-JAr"/>
                             <constraint firstAttribute="centerY" secondItem="AEO-RZ-O19" secondAttribute="centerY" constant="3" id="T2J-UP-v6f"/>
-                            <constraint firstItem="UBe-2y-tTH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="WzU-oD-RqO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="UBe-2y-tTH" secondAttribute="trailing" constant="-16" id="g5F-1S-qTE"/>
-                            <constraint firstItem="UBe-2y-tTH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="uLO-RV-yhR"/>
+                            <constraint firstItem="UBe-2y-tTH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-16" id="WzU-oD-RqO"/>
+                            <constraint firstAttribute="trailing" secondItem="UBe-2y-tTH" secondAttribute="trailing" constant="-16" id="g5F-1S-qTE"/>
+                            <constraint firstItem="UBe-2y-tTH" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="uLO-RV-yhR"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="UBe-2y-tTH" secondAttribute="bottom" id="zsM-7d-tPp"/>
                         </constraints>
                     </view>
