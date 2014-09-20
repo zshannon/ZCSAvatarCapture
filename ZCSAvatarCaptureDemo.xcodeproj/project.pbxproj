@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11284AED19AEA496002169BB /* model-001.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11284AEC19AEA496002169BB /* model-001.jpg */; };
+		11603BE019CE037400CD1DDF /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11603BDF19CE037400CD1DDF /* Launch Screen.xib */; };
 		11A0505319AE832B00183EE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505219AE832B00183EE4 /* Foundation.framework */; };
 		11A0505519AE832B00183EE4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505419AE832B00183EE4 /* CoreGraphics.framework */; };
 		11A0505719AE832B00183EE4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A0505619AE832B00183EE4 /* UIKit.framework */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		11284AEC19AEA496002169BB /* model-001.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "model-001.jpg"; sourceTree = "<group>"; };
+		11603BDF19CE037400CD1DDF /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		11A0504F19AE832B00183EE4 /* ZCSAvatarCaptureDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCSAvatarCaptureDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11A0505219AE832B00183EE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		11A0505419AE832B00183EE4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +135,7 @@
 				11A0506819AE832B00183EE4 /* ViewController.m */,
 				11A0506A19AE832B00183EE4 /* Images.xcassets */,
 				11A0505919AE832B00183EE4 /* Supporting Files */,
+				11603BDF19CE037400CD1DDF /* Launch Screen.xib */,
 			);
 			path = ZCSAvatarCaptureDemo;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				11A0506B19AE832B00183EE4 /* Images.xcassets in Resources */,
 				11A0505D19AE832B00183EE4 /* InfoPlist.strings in Resources */,
 				11A0506619AE832B00183EE4 /* Main.storyboard in Resources */,
+				11603BE019CE037400CD1DDF /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,11 +398,11 @@
 			baseConfigurationReference = 92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -409,11 +413,11 @@
 			baseConfigurationReference = 92DB648C51494CD6A2CFB744 /* Pods-ZCSAvatarCaptureDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "ZCSAvatarCaptureDemo/ZCSAvatarCaptureDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

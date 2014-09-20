@@ -5,7 +5,7 @@ You've got user avatars in your app. You probably don't have user avatar editing
 
 ## Add to your Podfile
 
-`pod 'ZCSAvatarCapture', '~> 0.0.1'`
+`pod 'ZCSAvatarCapture', '~> 0.0.3'`
 
 ## Use in your project
 
@@ -17,8 +17,7 @@ You've got user avatars in your app. You probably don't have user avatar editing
 ZCSAvatarCaptureController *avatarCaptureController = [[ZCSAvatarCaptureController alloc] init];
 avatarCaptureController.delegate = self;
 avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"]; // Use your current avatar image here
-avatarCaptureController.view.frame = CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 100, 100); // Set to whatever size you'd like
-[self.view addSubview:avatarCaptureController.view];
+[self.avatarView addSubview:self.avatarCaptureController.view]; // self.avatarView is a placeholder on the Storyboard in this example
 ```
 
 ### Capture

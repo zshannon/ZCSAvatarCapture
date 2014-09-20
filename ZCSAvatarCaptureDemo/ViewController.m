@@ -23,8 +23,7 @@
 	self.avatarCaptureController = [[ZCSAvatarCaptureController alloc] init];
 	self.avatarCaptureController.delegate = self;
 	self.avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"];
-	self.avatarCaptureController.view.frame = self.avatarView.frame;
-	[self.view addSubview:self.avatarCaptureController.view];
+	[self.avatarView addSubview:self.avatarCaptureController.view];
 }
 
 - (void)imageSelected:(UIImage *)image {
