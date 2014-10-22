@@ -5,7 +5,7 @@ You've got user avatars in your app. You probably don't have user avatar editing
 
 ## Add to your Podfile
 
-`pod 'ZCSAvatarCapture', '~> 0.0.3'`
+`pod 'ZCSAvatarCapture', '~> 0.0.4'`
 
 ## Use in your project
 
@@ -18,9 +18,14 @@ ZCSAvatarCaptureController *avatarCaptureController = [[ZCSAvatarCaptureControll
 avatarCaptureController.delegate = self;
 avatarCaptureController.image = [UIImage imageNamed:@"model-001.jpg"]; // Use your current avatar image here
 [self.avatarView addSubview:self.avatarCaptureController.view]; // self.avatarView is a placeholder on the Storyboard in this example
+
+// You can manually initiate a capture session like so (thanks to @ssuchanowski)
+[avatarCaptureController startCapture];
 ```
 
 ### Capture
+The delegate method `imageSelected:(UIImage *)image` will be called when the user completes capture.
+
 ```obj-c
 - (void)imageSelected:(UIImage *)image {
 	// Do something with your user's new avatar image

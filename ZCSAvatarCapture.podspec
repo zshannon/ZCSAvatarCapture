@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZCSAvatarCapture"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "User avatar editing made nice."
 
   s.description  = "This is a nice interface for editing a photo. Just tap on the photo to change it. It's greate for user avatars."
@@ -69,7 +69,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/zshannon/ZCSAvatarCapture.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/zshannon/ZCSAvatarCapture.git", :tag => "0.0.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
