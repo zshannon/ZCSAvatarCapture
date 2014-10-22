@@ -20,4 +20,6 @@
 @property (weak) id<ZCSAvatarCaptureControllerDelegate> delegate;
 @property (strong, nonatomic) UIImage *image;
 
+- (void)startCapture;
+
 @end

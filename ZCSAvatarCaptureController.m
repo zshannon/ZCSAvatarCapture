@@ -27,7 +27,6 @@
 @property (nonatomic, strong) UIView *imageSelectedView;
 @property (nonatomic, strong) UIImage *selectedImage;
 
-- (void)startCapture;
 - (void)endCapture;
 
 @end
