@@ -5,7 +5,7 @@ You've got user avatars in your app. You probably don't have user avatar editing
 
 ## Add to your Podfile
 
-`pod 'ZCSAvatarCapture', '~> 0.0.4'`
+`pod 'ZCSAvatarCapture', '~> 0.0.5'`
 
 ## Use in your project
 
