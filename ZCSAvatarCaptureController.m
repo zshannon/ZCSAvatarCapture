@@ -100,26 +100,28 @@
 		NSError *error = nil;
 		AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self.captureDevice error:&error];
 
-		[self.captureSession addInput:input];
-
-		self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
-		NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
-		[self.stillImageOutput setOutputSettings:outputSettings];
-		[self.captureSession addOutput:self.stillImageOutput];
-		
-		UIButton *shutterButton =
-			[[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x + (CGRectGetWidth(previousFrame) / 2) - 50, previousFrame.origin.y + CGRectGetHeight(previousFrame) + 10, 100, 100)];
-		[shutterButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/take-snap"] forState:UIControlStateNormal];
-		[shutterButton addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
-		[shutterButton setTintColor:[UIColor blueColor]];
-		[shutterButton.layer setCornerRadius:20.0];
-		[self.captureView addSubview:shutterButton];
-
-		UIButton *swapCamerasButton =
-			[[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x, previousFrame.origin.y - 35, 47, 25)];
-		[swapCamerasButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/front-camera"] forState:UIControlStateNormal];
-		[swapCamerasButton addTarget:self action:@selector(swapCameras:) forControlEvents:UIControlEventTouchUpInside];
-		[self.captureView addSubview:swapCamerasButton];
+        if (input) {
+            [self.captureSession addInput:input];
+            
+            self.stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
+            NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
+            [self.stillImageOutput setOutputSettings:outputSettings];
+            [self.captureSession addOutput:self.stillImageOutput];
+            
+            UIButton *shutterButton =
+            [[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x + (CGRectGetWidth(previousFrame) / 2) - 50, previousFrame.origin.y + CGRectGetHeight(previousFrame) + 10, 100, 100)];
+            [shutterButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/take-snap"] forState:UIControlStateNormal];
+            [shutterButton addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
+            [shutterButton setTintColor:[UIColor blueColor]];
+            [shutterButton.layer setCornerRadius:20.0];
+            [self.captureView addSubview:shutterButton];
+            
+            UIButton *swapCamerasButton =
+            [[UIButton alloc] initWithFrame:CGRectMake(previousFrame.origin.x, previousFrame.origin.y - 35, 47, 25)];
+            [swapCamerasButton setImage:[UIImage imageNamed:@"PKImageBundle.bundle/front-camera"] forState:UIControlStateNormal];
+            [swapCamerasButton addTarget:self action:@selector(swapCameras:) forControlEvents:UIControlEventTouchUpInside];
+            [self.captureView addSubview:swapCamerasButton];
+        }
 	}
 
 	UIButton *showImagePickerButton = [[UIButton alloc]
